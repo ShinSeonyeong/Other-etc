@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> document </title>
+</head>
+<body>
+    <script>
+        var first  = 1200;
+        var second = 1300;
+        var third  = 1000;
+        var fourth = prompt("4분기의 판매량을 입력해주세요.", '');
+        
+        var Ave_sel = (first + second + third) / 3;
+
+        var result = Ave_sel <= fourth ? "판매량이 평균 이상입니다." : "판매량이 평균 미달입니다.";
+        document.write(result);
+    </script>
+</body>
+</html>
