@@ -1,0 +1,759 @@
+.profile {
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box {
+    width: 250px;
+    background: cadetblue;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 5px 5px grey;
+}
+
+.content {
+    text-align: center;
+
+}
+
+.title {
+    text-align: center;
+
+}
+
+.container {
+    width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-content {
+    width: 70%;
+    height: 200px;
+    float: left;
+}
+
+.left {
+    width: 80%;
+    height: 400px;
+    display: inline-block;
+    background: coral;
+}
+
+.right {
+    width: 90%;
+    height: 400px;
+    background: coral;
+    float: right;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background-color: gray;
+    clear: both;
+}
+
+/*clear은 float를 사용했을 때 써줘야 함*/
+
+.header {
+    width: 100%;
+    height: 50px;
+    background: aquamarine;
+
+}
+
+.left-menu {
+    width: 10%;
+    height: 400px;
+    background: cornflowerblue;
+    float: left;
+}
+
+.blog-img {
+    width: 30%;
+    height: 200px;
+    float: left;
+}
+
+.blog-profile {
+    width: 20%;
+    float: left;
+    margin: 10px;
+}
+
+.blog-name {
+    float: left;
+    margin: 10px;
+}
+
+.main-background {
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/shoes.jpg);
+    /*    배경에 틴트 넣기, 검은색 입힌 후 배경 겹치기 기술*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*    filter: brightness(80%); 배경에 틴트 넣기 단, 글씨에도 틴트가 적용*/
+    padding: 1px
+}
+
+.main-title {
+    color: burlywood;
+    font-size: 60px;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.main-content {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 30px;
+}
+
+.main-button {
+    padding: 0px;
+    font-size: 20px;
+    background: white;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 120px;
+    margin: auto;
+    z-index: 5;
+    /*
+    position: relative; 좌표이동이 가능, 공중에 뜸
+    내 위치를 기준으로 좌표를 바꿀 수 있음.
+    position: fiexed; 스크롤 할 때 고정할 수 있음.
+    bottom: 100px;
+    left: 100px;
+*/
+
+}
+
+.main-button:hover{
+    background-color: blanchedalmond;
+    cursor: pointer;
+}
+
+.main-button:focus {
+    background-color: aliceblue;
+}
+
+
+.explain-box {
+    width: 80%;
+    max-width: 550px;
+    margin: auto;
+    padding: 50px;
+    text-align: center;
+    background-color: #eee;
+    position: relative;
+    top: -40px;
+}
+
+@font-face {
+    font-family: 'NanumSquare';
+    font-weight: 400;
+    src: url(../font/NanumSquareAcB.woff);
+}
+
+<link rel="preconnect"href="https://fonts.googleapis.com" > <link rel="preconnect"href="https://fonts.gstatic.com"crossorigin > <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"rel="stylesheet" > div,
+input,
+textarea {
+    box-sizing: border-box;
+}
+
+/*글자 스타일링 할 때 transform: rotate(0.03deg) 사용해주면 글자가 부드러워짐.
+
+body {
+    margin: 0px;
+    /*    font-family: 폰트;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type=text] {
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.form-background {
+    background-color: dimgrey;
+    padding: 10%;
+    /*
+    width: 70%;
+    max-width: 800px;
+    height: 600px;
+    background-color: dimgray;
+    margin: auto;    
+*/
+}
+
+.form-white {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    /*
+    
+    background-color: white;
+    padding: 40px;
+    position: relative;
+    top: 100px;
+*/
+}
+
+.form-input {
+    width: 100%;
+    /*    실제 width는 100%+20px 이기에 box-sizing 이용*/
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.w-50 {
+    width: 45%;
+    float: left;
+    padding: 12px;
+}
+
+.w-100 {
+    width: 95%;
+    padding: 10px;
+}
+
+
+
+.yellow-button {
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    background-color: lightyellow;
+    cursor: pointer;
+}
+
+.yellow-button:hover {
+    background-color: lightcoral;
+}
+
+.yellow-button:focus {
+    background-color: aliceblue;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border-bottom: 1px solid black;
+}
+
+.cart-table td,
+.cart-table th {
+    padding: 15px;
+    border-bottom: 1px solid #c2d3de;
+}
+
+.cart-background {
+    width: 100%;
+    background-color: lightskyblue;
+    padding: 50px;
+}
+
+.cart-table {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+
+
+}
+
+.cart-table th:nth-child(2) {
+    width: 400px;
+
+}
+
+.cell-long {}
+
+
+
+.cart-btn {
+    padding: 20px;
+    font-size: 15px;
+    display: block;
+    border: none;
+    border-radius: 10px;
+    background-color: lightyellow;
+    cursor: pointer;
+    /*  cursor : 버튼에 마우스 댔을 때 커서가 바뀜  */
+}
+
+.cart-btn:hover {
+    background-color: lightcoral;
+}
+
+.cart-btn:focus {
+    background-color: aliceblue;
+}
+
+.cart-btn:active {
+    background-color: brown;
+    border: 2px solid black;
+}
+
+
+
+
+
+.input-test {
+    font-size: 20px;
+}
+
+.input-test:focus {
+    border: 2px solid red;
+}
+
+
+
+.custom-link {
+    text-decoration: none;
+}
+
+.custom-link:link {
+    color: violet;
+}
+
+.custom-link {}
+
+
+
+.flex-item {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    margin: 5px;
+}
+
+.flex-container {
+    display: flex;
+    /*
+    height: 500px;
+    align-items: center;
+    justify-content: center;
+*/
+}
+
+.nav-container {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    padding: 10px;
+}
+
+.nav-item {
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.test {
+    width: 100px;
+    height: 100px;
+    background: grey;
+}
+
+.product-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.product-container div {
+    float: left;
+    width: 25%;
+}
+
+@media screen and (max-width: 1200px) {
+    .main-title {
+        font-size: 30px;
+    }
+
+    .product-container div {
+        width: 50%;
+    }
+
+    .product-container {
+        max-width: 600px;
+    }
+
+    .main-pf-title {
+        float: left;
+        margin-top: 50px;
+    }
+
+    .explain-product-container div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-title {
+        font-size: 30px;
+    }
+
+    .product-container div {
+        width: 100%;
+    }
+
+
+}
+
+/*
+1200px : 태블릿 디자인
+768px : 모바일 디자인
+screen 대신 print 사용하면 프린트할 때 적용됨.*/
+
+.product-container i {
+    background-color: burlywood;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    padding-top: 25px;
+    box-sizing: border-box;
+    color: white;
+    margin-top: 40px;
+}
+
+.explain-product-container i {
+    background-color: burlywood;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    padding-top: 25px;
+    box-sizing: border-box;
+    color: white;
+    margin-top: 40px;
+}
+}
+
+.shop-bg {
+    background-color: #eee;
+    padding: 20px;
+}
+
+.shop-container {
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.shop-item {
+    width: 33%;
+    padding: 10px;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    width: 26%;
+    height: 20%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    /*    animation-direction: reverse;*/
+    transition: all 1s;
+    transition-timing-function: cubic-bezier(1, .45, .13, .99);
+    transition
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+.overlay-wrap {
+    position: absolute;
+    width: 26%;
+    height: 20%;
+    overflow: hidden;
+}
+
+.overlay-wrap:hover .overlay-black {
+    margin-top: 50%;
+    cursor: pointer;
+}
+
+.overlay-black {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-top: 100%;
+    transition: all 1s;
+}
+
+.main-bgd {
+    width: 100%;
+    height: 500px;
+    background-color: cornflowerblue;
+    /*
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/shoes.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1px
+*/
+}
+
+body {
+    margin: 0;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h4 {
+    font-size: 22px;
+}
+
+.main-pf-bgd {
+    background-image: linear-gradient(to bottom, #499add, #4e61c0);
+    height: 550px;
+    padding: 20px;
+    color: white;
+}
+
+.main-pf-left {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.main-pf-title {
+    float: left;
+    margin-top: 50px;
+    /*
+    color: burlywood;
+    font-size: 60px;
+    margin-top: 150px;
+    text-align: center;
+*/
+}
+
+
+.main-pf-button {
+    padding: 15px 20px;
+    font-size: 16px;
+    font-family: 'nanumsquare';
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-black {
+    background: #444;
+    color: white;
+}
+
+.btn-black:hover {
+    background: lightcoral;
+}
+
+.btn-black:active {
+    background: grey;
+}
+
+.main-pf-img {
+    width: 400px;
+    float: right;
+    margin-top: 95px;
+
+}
+
+.explain-pf-box {
+    width: 800px;
+    display: block;
+    margin: auto;
+    padding: 50px;
+    text-align: center;
+    /*
+    margin-left: auto;
+    margin-right: auto;
+*/
+}
+
+.explain-pf-button {
+    padding: 10px 20px;
+    margin: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background-color: dimgrey;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.explain-product-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.explain-product-container div {
+    width: 100%;
+}
+
+@media screen and (max-width : 992px) {
+    .main-pf-img {
+        width: 260px;
+        display: block;
+        float: none;
+        margin: auto;
+        margin-top: 42px;
+    }
+
+    .main-pf-title {
+        float: none;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .service-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-item div {
+        width: 100%;
+    }
+
+    portfolio-item1 {
+        float: none;
+        width: 100%;
+    }
+}
+
+.service {
+    background-color: #4e61c0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 60px 30px 50px 30px;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.service-icon {
+    background: white;
+    color: #4e61c0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.service-item {
+    display: flex;
+}
+
+.service-item div {
+    width: 25%;
+}
+
+@media screen and (max-width : 992px) {
+    .service-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-item div {
+        width: 100%;
+    }
+}
+
+.portfolio {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.portfolio-container {
+    text-align: left;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.portfolio-text {
+    color: white;
+    padding: 50px;
+    width: 100%;
+}
+
+.portfolio-item1 {
+    position: relative;
+    background-image: url(portfolio-1.jpg);
+    width: 50%;
+    height: 350px;
+    background-size: cover;
+    float: left;
+}
+
+@media screen and (max-width : 768px) {
+    .portfolio-item1 {
+        float: none;
+        width: 100%
+    }
+}
+
+.white-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border: 10px soild white;
+    transition: border 0.7s;
+}    
+
+.white-box:hover {
+    border: 20px solid white;
+}
+
+
+
+
