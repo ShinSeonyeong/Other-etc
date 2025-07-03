@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  width: 100%;
+  height: 50px;
+  background: #ccc;
+  color: black;
+  line-height: 50px;
+  padding: 0 20px;
+}
+
+#menu > ul {
+  display: flex;
+  gap: 20px;
+}
+
+#menu_name {
+  padding: 0 20px;
+}
+
+#intro {
+    height: 100vh;
+    background: #fdf7f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+#intro h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+#intro span {
+  color: #ff6b81; /* 포인트 컬러 */
+  font-weight: bold;
+}
+
+#intro .intro_text {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+#intro_random_about {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 80%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  min-height: 1.2em; /* 공간 확보 */
+}
+
+#intro_random_about.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#intro_random_about p {
+  margin: 0;
+}
