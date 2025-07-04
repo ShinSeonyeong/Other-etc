@@ -10,15 +10,15 @@ let aboutShown = false;
 
 window.addEventListener("scroll", () => {
   const introSection = document.getElementById("intro");
-  const aboutBox = document.getElementById("intro_random_about");
+  const aboutText = document.getElementById("about_text");
   const scrollY = window.scrollY;
 
   // 👇 여기 수정!
   const triggerPoint = introSection.offsetTop + introSection.offsetHeight / 2;
   if (!aboutShown && scrollY > triggerPoint) {
     const randomIndex = Math.floor(Math.random() * randomAboutMe.length);
-    aboutBox.textContent = randomAboutMe[randomIndex];
-    aboutBox.classList.add("visible");
+    aboutText.textContent = randomAboutMe[randomIndex];
+    aboutText.classList.add("visible");
     aboutShown = true;
   }
 });
