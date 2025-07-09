@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SEONYEONG</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="menu">
@@ -18,7 +21,7 @@
       </ul>
     </div>
 
-    <section id="intro">
+    <section id="intro" class="hero-section">
       <h1>
         Building connections<br />
         with ceaseless passion
@@ -28,11 +31,143 @@
         아이디어를 살아 숨 쉬게 만드는 개발자 <span>SINSEONYEONG</span>입니다.
       </p>
     </section>
-    <section id="about_section">
+    <section id="about_section" class="about-section">
       <div id="intro_random_about">
         <div id="about_text"></div>
       </div>
     </section>
+    <section id="profile_info" class="profile-section">
+      <div class="info_item">
+        <i class="icon">👤</i>
+        <div>
+          <p class="label">이름</p>
+          <p class="value">신선영</p>
+        </div>
+      </div>
+      <div class="info_item">
+        <i class="icon">📅</i>
+        <div>
+          <p class="label">생년월일</p>
+          <p class="value">98.11.18</p>
+        </div>
+      </div>
+      <div class="info_item">
+        <i class="icon">📞</i>
+        <div>
+          <p class="label">연락처</p>
+          <p class="value">010-8453-9818</p>
+        </div>
+      </div>
+      <div class="info_item">
+        <i class="icon">✉️</i>
+        <div>
+          <p class="label">이메일</p>
+          <p class="value">tlstsjdud1920@gmail.com</p>
+        </div>
+      </div>
+      <div class="info_item">
+        <i class="icon">📍</i>
+        <div>
+          <p class="label">위치</p>
+          <p class="value">대구광역시 중구</p>
+        </div>
+      </div>
+      <div class="info_item">
+        <i class="icon">📝</i>
+        <div>
+          <p class="label">학력</p>
+          <p class="value">강원대학교 (정보통신공학과)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects_section" class="projects-section"></section>
+
+    <section id="skills_section" class="skills-section">
+      <h2>📚 기술 스택</h2>
+      <table class="skills_table">
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>해봤어요</th>
+            <th>공부해보고 싶어요</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Language</td>
+            <td>
+              <span class="badge pink">HTML5</span>
+              <span class="badge yellow">CSS3</span>
+              <span class="badge orange">JavaScript</span>
+              <span class="badge gray">PowerBuilder</span>
+              <span class="badge blue">React</span>
+              <span class="badge yellow">C#</span>
+            </td>
+            <td>
+              <span class="badge sky">Java</span>
+              <span class="badge green">Python</span>
+              <span class="badge light">C</span>
+              <span class="badge gray">C++</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Frontend</td>
+            <td>
+              <span class="badge pink">HTML5</span>
+              <span class="badge yellow">CSS3</span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Backend</td>
+            <td><span class="badge brown">node.js</span></td>
+            <td><span class="badge purple">JSP</span></td>
+          </tr>
+          <tr>
+            <td>RDBMS</td>
+            <td>
+              <span class="badge gold">MySQL</span>
+              <span class="badge blue">MariaDB</span>
+              <span class="badge orange">oracle</span>
+              <span class="badge teal">supabase</span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>etc</td>
+            <td>
+              <span class="badge soft">cloudType</span>
+              <span class="badge dark">Postman</span>
+              <span class="badge red">vercel</span>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="career_section" class="career-section">
+      <h2>커리어</h2>
+      <div class="career_timeline" id="career_timeline"></div>
+    </section>
+
+    <section id="contact_section" class="contact-section">
+      <h2>📫 Contact</h2>
+      <div class="contact_item">
+        <p class="contact_title">🐱 <strong>Github</strong></p>
+        <a href="https://github.com/ShinSeonyeong" target="_blank"
+          >https://github.com/ShinSeonyeong</a
+        >
+      </div>
+      <div class="contact_item">
+        <p class="contact_title">🦄 <strong>Blog</strong></p>
+        <a href="https://brilliant-mylife.tistory.com/" target="_blank"
+          >https://brilliant-mylife.tistory.com/</a
+        >
+      </div>
+    </section>
+
     <script src="js/script.js"></script>
   </body>
 </html>
