@@ -1,16 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const authRoutes = require("./routes/auth");
-
-dotenv.config();
+const express = require('express');
+const cors = require('cors');
+const authRouter = require('./routes/auth');
 
 const app = express();
 app.use(cors());
-app.use(express.json()); //json 파싱
-app.use("/auth", authRoutes); //auth 라우트 사용
+app.use(express.json());
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Backend server is running at http://localhost:${PORT}`);
+app.use('/auth', authRouter);
+
+app.listen(4000, () => {
+  console.log('Server listening on port 4000');
 });
