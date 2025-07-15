@@ -54,7 +54,7 @@ router.get("/kakao/callback", async (req, res) => {
 
     // 사용자 정보로 로그인 또는 회원가입 처리 (예: Supabase 사용자 등록)
     // res.json(kakaoUser); // 임시로 JSON 응답
-    res.redirect(`http://localhost:4000/?code=${code}`);
+    res.redirect(`http://localhost:3000/?code=${code}`);
   } catch (error) {
     console.error('카카오 로그인 에러:', error.response?.data || error.message || error);
     res.status(500).send("로그인 실패");

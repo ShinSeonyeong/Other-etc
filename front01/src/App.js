@@ -12,14 +12,13 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-  console.log("useEffect 실행, location.search:", location.search);
-  const code = new URLSearchParams(location.search).get("code");
-  console.log("인가 코드:", code);
+    console.log("useEffect 실행, location.search:", location.search);
+    const code = new URLSearchParams(location.search).get("code");
+    console.log("인가 코드:", code);
 
     if (code) {
-      // 백엔드로 인가 코드 전달
       axios
-        .post("http://localhost:4001/auth/kakao", { code })
+        .post("http://localhost:8000/auth/kakao", { code })
         .then((res) => {
           console.log("서버 응답:", res.data);
           setUser(res.data.user);
