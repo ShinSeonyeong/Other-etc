@@ -12,9 +12,6 @@ router.post("/kakao", async (req, res) => {
     const tokenData = await getKakaoToken(code);
     const userInfo = await getKakaoUserInfo(tokenData.access_token);
 
-    // TODO: Supabase에서 로그인 or 회원가입 처리
-    // 예: supabase.from('users').upsert({...userInfo})
-
     res.json({ user: userInfo });
   } catch (err) {
     console.error(err);
@@ -56,11 +53,14 @@ router.get("/kakao/callback", async (req, res) => {
     const kakaoUser = userResponse.data;
 
     // 사용자 정보로 로그인 또는 회원가입 처리 (예: Supabase 사용자 등록)
-    res.json(kakaoUser); // 임시로 JSON 응답
+    // res.json(kakaoUser); // 임시로 JSON 응답
+    res.redirect(`http://localhost:4000/?code=${code}`);
   } catch (error) {
     console.error('카카오 로그인 에러:', error.response?.data || error.message || error);
     res.status(500).send("로그인 실패");
   }
 });
+
+
 
 module.exports = router;

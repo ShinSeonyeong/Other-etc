@@ -1,31 +1,42 @@
 // frontend/src/App.js
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import axios from 'axios';
-import KakaoLogin from './kakaoLogin';
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import KakaoLogin from "./kakaoLogin";
+import UserProfile from "./UserProfile";
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const code = new URLSearchParams(location.search).get('code');
+  console.log("useEffect 실행, location.search:", location.search);
+  const code = new URLSearchParams(location.search).get("code");
+  console.log("인가 코드:", code);
 
     if (code) {
       // 백엔드로 인가 코드 전달
-      axios.post('http://localhost:4000/auth/kakao', { code })
-        .then(res => {
-          console.log('로그인 성공:', res.data);
-          // TODO: JWT 저장 등 로그인 상태 유지
+      axios
+        .post("http://localhost:4001/auth/kakao", { code })
+        .then((res) => {
+          console.log("서버 응답:", res.data);
+          setUser(res.data.user);
+          navigate("/profile");
         })
-        .catch(err => console.error('로그인 실패:', err));
+        .catch((err) => console.error("로그인 실패:", err));
     }
-  }, [location]);
+  }, [location, navigate]);
 
   return (
-    <div>
-      <h1>카카오 로그인 데모</h1>
-      <KakaoLogin />
-    </div>
+    <Routes>
+      <Route path="/" element={<KakaoLogin />} />
+      <Route
+        path="/profile"
+        element={user ? <UserProfile user={user} /> : <KakaoLogin />}
+      />
+    </Routes>
   );
 }
 
