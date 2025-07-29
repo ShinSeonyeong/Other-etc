@@ -6,6 +6,7 @@ const LoginResult = () => {
   const hasHandled = useRef(false); // ✅ 중복 방지용
 
   useEffect(() => {
+    console.log("LoginResult 진입");
     if (hasHandled.current) return; // 이미 처리했으면 무시
     hasHandled.current = true;
 
@@ -16,7 +17,7 @@ const LoginResult = () => {
     if (token) {
       localStorage.setItem("jwt", token);
       alert(`환영합니다, ${nickname}님!`);
-      navigate("/dashboard");
+      navigate("/record");
     } else {
       alert("로그인에 실패했습니다.");
       navigate("/");

@@ -1,0 +1,23 @@
+/* src/pages/RecordPage.css */
+
+.record-page {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom right, #fbeaff, #e4f0ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Arial Rounded MT Bold", "Noto Sans KR", sans-serif;
+}
+
+.record-page h1 {
+  font-size: 2rem;
+  color: #6b21a8; /* 보라 */
+  margin-bottom: 10px;
+}
+
+.record-page .subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
