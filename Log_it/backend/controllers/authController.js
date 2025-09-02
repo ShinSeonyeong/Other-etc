@@ -24,15 +24,20 @@ exports.kakaoCallback = async (req, res) => {
     );
 
     // 5) 프론트로 JWT와 닉네임 전달 (쿼리 스트링으로 리다이렉트)
-    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
-
+    // const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+    const clientUrl = process.env.CLIENT_URL;
+    if (!clientUrl) {
+      console.error("❌ CLIENT_URL이 설정되지 않았습니다!");
+      return res.status(500).send("환경변수 CLIENT_URL이 누락됨");
+    }
+    
     res.redirect(
       `${clientUrl}/login-result?token=${jwtToken}&nickname=${encodeURIComponent(
         user.nickname
       )}`
     );
 
-    console.log("✅ CLIENT_URL:", process.env.CLIENT_URL);
+    console.log("✅ CLIENT_URL:", clientUrl);
   } catch (err) {
     console.error(err);
     res.status(500).send("로그인 처리 중 오류 발생");
