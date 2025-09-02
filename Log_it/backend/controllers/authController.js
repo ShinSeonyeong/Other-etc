@@ -32,7 +32,7 @@ exports.kakaoCallback = async (req, res) => {
       )}`
     );
 
-
+    console.log("✅ CLIENT_URL:", process.env.CLIENT_URL);
   } catch (err) {
     console.error(err);
     res.status(500).send("로그인 처리 중 오류 발생");
