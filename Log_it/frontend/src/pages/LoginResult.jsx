@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const LoginResult = () => {
   const navigate = useNavigate();
   const hasHandled = useRef(false); // ✅ 중복 방지용
+  console.log("여기 오나?")
 
   useEffect(() => {
     console.log("LoginResult 진입");
