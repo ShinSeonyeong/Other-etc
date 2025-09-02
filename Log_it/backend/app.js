@@ -5,15 +5,26 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const recordRoutes = require("./routes/recordRoutes");
 const entryRoutes = require("./routes/entryRoutes");
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://frontend-tau-one-76.vercel.app"
+];
 
 const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true, // ✅ 프론트에서 쿠키 전송 시 필요한 옵션
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS blocked"));
+      }
+    },
+    credentials: true,
   })
 );
+
 app.use(express.json()); // ✅ JSON 파싱
 
 // ✅ 라우트 등록
