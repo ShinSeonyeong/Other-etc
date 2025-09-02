@@ -24,17 +24,15 @@ exports.kakaoCallback = async (req, res) => {
     );
 
     // 5) 프론트로 JWT와 닉네임 전달 (쿼리 스트링으로 리다이렉트)
-    // res.redirect(
-    //   `http://localhost:5173/login-result?token=${jwtToken}&nickname=${encodeURIComponent(
-    //     user.nickname
-    //   )}`
-    // );
+    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+
     res.redirect(
-  `https://frontend-tau-one-76.vercel.app/login-result?token=${jwtToken}&nickname=${encodeURIComponent(
-    user.nickname
-  )}`
-);
-s
+      `${clientUrl}/login-result?token=${jwtToken}&nickname=${encodeURIComponent(
+        user.nickname
+      )}`
+    );
+
+
   } catch (err) {
     console.error(err);
     res.status(500).send("로그인 처리 중 오류 발생");
