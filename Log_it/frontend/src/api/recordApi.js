@@ -13,7 +13,8 @@ export const postRecord = async (recordData) => {
   });
 
   if (!res.ok) {
-    throw new Error("기록 저장 실패");
+    const msg = await res.text().catch(() => "");
+    throw new Error(`기록 저장 실패 (${res.status}) ${msg}`);
   }
 
   return await res.json();
