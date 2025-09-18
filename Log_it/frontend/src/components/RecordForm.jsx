@@ -1,16 +1,47 @@
-// frontend/src/components/RecordForm.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./RecordForm.css"; // ✅ CSS 따로 분리
 
-const RecordForm = ({ onSubmit }) => {
+const RecordForm = ({ onSubmit, editingRecord }) => {
   const [mood, setMood] = useState("");
   const [exercise, setExercise] = useState("");
   const [weight, setWeight] = useState("");
   const [bowel, setBowel] = useState("");
 
+  // editingRecord가 바뀔 때마다 폼 값 업데이트 (수정 모드)
+  useEffect(() => {
+    if (editingRecord) {
+      setMood(editingRecord.mood || "");
+      setExercise(editingRecord.exercise || "");
+      setWeight(editingRecord.weight || "");
+      setBowel(editingRecord.bowel || "");
+    } else {
+      // 새 기록 모드일 때 초기화
+      setMood("");
+      setExercise("");
+      setWeight("");
+      setBowel("");
+    }
+  }, [editingRecord]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ mood, exercise, weight, bowel });
+    if (!editingRecord) {
+      // 새 기록 제출 후 초기화
+      setMood("");
+      setExercise("");
+      setWeight("");
+      setBowel("");
+    }
+  };
+
+  // 편집 취소
+  const handleCancel = () => {
+    setMood("");
+    setExercise("");
+    setWeight("");
+    setBowel("");
+    onSubmit(null); // RecordPage에서 editingRecord를 null로
   };
 
   return (
@@ -60,9 +91,18 @@ const RecordForm = ({ onSubmit }) => {
         />
       </div>
 
-      <button type="submit" className="submit-btn">
-        💾 기록 저장
-      </button>
+      <div className="form-actions">
+        <button type="submit" className="submit-btn">
+          {editingRecord ? "수정 완료 💾" : "기록 저장 💾"}
+        </button>
+
+        {/* 편집 모드일 때만 취소 버튼 표시 */}
+        {editingRecord && (
+          <button type="button" className="cancel-btn" onClick={handleCancel}>
+            ❌ 취소
+          </button>
+        )}
+      </div>
     </form>
   );
 };

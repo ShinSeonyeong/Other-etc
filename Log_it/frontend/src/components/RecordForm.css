@@ -1,13 +1,11 @@
-/* src/components/RecordForm.css */
-
 .record-form {
   max-width: 480px;
   margin: 40px auto;
   padding: 32px;
   background: #fff;
-  border: 3px dashed #ff90e8; /* 💬 말풍선 느낌 */
+  border: 3px dashed #ff90e8; /* 말풍선 느낌 */
   border-radius: 24px;
-  box-shadow: 0 0 20px rgba(255, 144, 232, 0.4); /* ✨ 글로우 */
+  box-shadow: 0 0 20px rgba(255, 144, 232, 0.4); /* 글로우 */
   font-family: "Arial Rounded MT Bold", "Noto Sans KR", sans-serif;
   position: relative;
   animation: glowFade 4s infinite alternate;
@@ -29,6 +27,7 @@
   font-size: 1.6rem;
 }
 
+/* 입력 그룹 */
 .form-group {
   margin-bottom: 20px;
   position: relative;
@@ -43,7 +42,6 @@
   position: relative;
 }
 
-/* 🎀 이모지 아이콘 */
 .form-group label::before {
   content: "✨";
   position: absolute;
@@ -51,7 +49,7 @@
   top: 0;
 }
 
-/* 입력창 디자인 */
+/* 입력창 */
 .form-group input {
   width: 100%;
   padding: 14px 16px;
@@ -71,7 +69,7 @@
   background-color: #fff3ff;
 }
 
-/* 버튼 디자인 */
+/* 제출 버튼 */
 .submit-btn {
   width: 100%;
   padding: 14px 16px;
@@ -89,4 +87,24 @@
 .submit-btn:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+}
+
+/* 취소 버튼 */
+.cancel-btn {
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ba68c8;
+  background: #fdf7ff;
+  border: 2px solid #ba68c8;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cancel-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(186, 104, 200, 0.4);
 }

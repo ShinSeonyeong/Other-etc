@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import RecordForm from "../components/RecordForm";
 import { postRecord } from "../api/recordApi";
 import "./RecordPage.css";
+import { motion, AnimatePresence } from "framer-motion"; // 추가
+
+const API_URL = import.meta.env.VITE_API_BASE_URL; // env 사용
 
 const RecordPage = () => {
   const [records, setRecords] = useState([]);
@@ -10,7 +13,7 @@ const RecordPage = () => {
   // GET 기록 조회
   const fetchRecords = async () => {
     const jwt = localStorage.getItem("jwt");
-    const res = await fetch("http://localhost:4000/api/records", {
+    const res = await fetch(`${API_URL}/api/records`, {
       headers: { Authorization: `Bearer ${jwt}` },
     });
     const data = await res.json();
@@ -22,12 +25,18 @@ const RecordPage = () => {
   }, []);
 
   const handleRecordSubmit = async (data) => {
+    if (!data) {
+      // 취소 버튼 눌렀을 때
+      setEditingRecord(null);
+      return; // 더 이상 처리하지 않음
+    }
+
     try {
       const jwt = localStorage.getItem("jwt");
 
       if (editingRecord) {
         // 수정 모드
-        const res = await fetch(`http://localhost:4000/api/records/${editingRecord.id}`, {
+        const res = await fetch(`${API_URL}/api/records/${editingRecord.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -37,7 +46,7 @@ const RecordPage = () => {
         });
         const updated = await res.json();
 
-        setRecords(prev =>
+        setRecords((prev) =>
           prev.map(r => (r.id === editingRecord.id ? updated.record : r))
         );
         setEditingRecord(null); // 편집 종료
@@ -59,7 +68,7 @@ const RecordPage = () => {
 
     try {
       const jwt = localStorage.getItem("jwt");
-      const res = await fetch(`http://localhost:4000/api/records/${id}`, {
+      const res = await fetch(`${API_URL}/api/records/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${jwt}` },
       });
@@ -89,30 +98,41 @@ const RecordPage = () => {
         {records.length === 0 ? (
           <p>아직 기록이 없습니다.</p>
         ) : (
-          records.map((record) => {
-            const createdAt = new Date(record.created_at);
-            return (
-              <div key={record.id} className="record-card">
-                <div className="date">
-                  {createdAt.toLocaleDateString("ko-KR")}{" "}
-                  {createdAt.toLocaleTimeString("ko-KR")}
-                </div>
-                <div className="details">
-                  <span>기분: {record.mood}</span> |{" "}
-                  <span>운동: {record.exercise}</span> |{" "}
-                  <span>몸무게: {record.weight}kg</span> |{" "}
-                  <span>배변: {record.bowel}</span>
-                </div>
-                <button onClick={() => handleEditClick(record)}>✏️ 수정</button>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(record.id)}
+          <AnimatePresence>
+            {records.map((record) => {
+              if (!record) return null;
+              const createdAt = new Date(record.created_at);
+
+              return (
+                <motion.div
+                  key={record.id}
+                  className="record-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  🗑️ 삭제
-                </button>
-              </div>
-            );
-          })
+                  <div className="date">
+                    {createdAt.toLocaleDateString("ko-KR")}{" "}
+                    {createdAt.toLocaleTimeString("ko-KR")}
+                  </div>
+                  <div className="details">
+                    <span>기분: {record.mood}</span> |{" "}
+                    <span>운동: {record.exercise}</span> |{" "}
+                    <span>몸무게: {record.weight}kg</span> |{" "}
+                    <span>배변: {record.bowel}</span>
+                  </div>
+                  <button onClick={() => handleEditClick(record)}>✏️ 수정</button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(record.id)}
+                  >
+                    🗑️ 삭제
+                  </button>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         )}
       </div>
     </div>

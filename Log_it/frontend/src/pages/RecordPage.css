@@ -1,3 +1,4 @@
+/* 전체 페이지 */
 .record-page {
   min-height: 100vh;
   padding: 30px 15px;
@@ -9,6 +10,7 @@
   color: #333;
 }
 
+/* 제목 */
 .record-page h1 {
   font-size: 1.8rem;
   margin-bottom: 5px;
@@ -20,6 +22,7 @@
   margin-bottom: 20px;
 }
 
+/* 기록 리스트 */
 .record-list {
   width: 100%;
   max-width: 500px;
@@ -33,41 +36,78 @@
   padding-bottom: 5px;
 }
 
+/* 카드 */
 .record-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  margin-bottom: 15px;
-  transition: transform 0.2s ease;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(174, 123, 255, 0.15);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .record-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(174, 123, 255, 0.3);
 }
 
+/* 날짜 / 세부 내용 */
 .record-card .date {
   font-size: 0.85rem;
   color: #888;
-  margin-bottom: 8px;
 }
 
 .record-card .details {
   font-size: 0.95rem;
   color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.record-card .details span {
-  margin-right: 8px;
+/* 카드 버튼 */
+.record-card button {
+  height: 36px;
+  padding: 0 12px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* RecordForm 관련 간격 */
+/* 수정 버튼 */
+.record-card .edit-btn {
+  background-color: #a97cff;
+  color: #fff;
+}
+
+.record-card .edit-btn:hover {
+  background-color: #855ed1;
+  transform: scale(1.03);
+}
+
+/* 삭제 버튼 */
+.record-card .delete-btn {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.record-card .delete-btn:hover {
+  background-color: #e55555;
+  transform: scale(1.03);
+}
+
+/* RecordForm */
 .record-page form {
   width: 100%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .record-page input,
@@ -75,10 +115,11 @@
 .record-page textarea,
 .record-page button {
   width: 100%;
-  padding: 10px 12px;
+  padding: 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 0.95rem;
+  box-sizing: border-box;
 }
 
 .record-page button {
@@ -86,40 +127,25 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  height: 42px;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .record-page button:hover {
   background-color: #855ed1;
+  transform: scale(1.02);
 }
 
+/* 반응형 */
 @media (max-width: 480px) {
   .record-page h1 {
     font-size: 1.5rem;
   }
-
   .record-page .subtitle {
     font-size: 0.9rem;
   }
-
   .record-card {
-    padding: 12px;
+    padding: 16px;
   }
-}
-
-/* 삭제 버튼 스타일 */
-.record-card .delete-btn {
-  margin-top: 8px;
-  padding: 6px 10px;
-  font-size: 0.85rem;
-  background-color: #ff6b6b;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.record-card .delete-btn:hover {
-  background-color: #e55555;
 }
