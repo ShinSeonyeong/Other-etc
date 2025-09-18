@@ -7,7 +7,8 @@ const recordRoutes = require("./routes/recordRoutes");
 const entryRoutes = require("./routes/entryRoutes");
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://frontend-tau-one-76.vercel.app"
+  "https://frontend-tau-one-76.vercel.app",
+  "https://frontend-tau-one-76.vercel.app/record"
 ];
 
 const app = express();
