@@ -90,7 +90,7 @@ const RecordPage = () => {
   return (
     <div className="record-page">
       <h1>📖 오늘의 기록</h1>
-      <p className="subtitle">하루를 정리해보세요 💫</p>
+      <h3 className="subtitle">하루를 정리해보세요 💫</h3>
       <RecordForm onSubmit={handleRecordSubmit} editingRecord={editingRecord} />
 
       <div className="record-list">

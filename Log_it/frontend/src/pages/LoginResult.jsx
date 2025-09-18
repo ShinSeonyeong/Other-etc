@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 const LoginResult = () => {
   const navigate = useNavigate();
   const hasHandled = useRef(false); // ✅ 중복 방지용
-  console.log("여기 오나?")
+  // console.log("여기 오나?");
 
   useEffect(() => {
-    console.log("LoginResult 진입");
     if (hasHandled.current) return; // 이미 처리했으면 무시
     hasHandled.current = true;
 
