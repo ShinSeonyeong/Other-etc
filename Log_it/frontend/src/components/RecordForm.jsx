@@ -1,53 +1,84 @@
 import { useEffect, useState } from "react";
-import "./RecordForm.css"; // ✅ CSS 따로 분리
+import "./RecordForm.css";
 
 const RecordForm = ({ onSubmit, editingRecord }) => {
   const [mood, setMood] = useState("");
+  const [energy, setEnergy] = useState(null); // 1~10
   const [exercise, setExercise] = useState("");
   const [weight, setWeight] = useState("");
   const [bowel, setBowel] = useState("");
+  const [gratitude, setGratitude] = useState("");
 
-  // editingRecord가 바뀔 때마다 폼 값 업데이트 (수정 모드)
   useEffect(() => {
     if (editingRecord) {
       setMood(editingRecord.mood || "");
+      setEnergy(editingRecord.energy || 0);
       setExercise(editingRecord.exercise || "");
       setWeight(editingRecord.weight || "");
       setBowel(editingRecord.bowel || "");
+      setGratitude(editingRecord.gratitude || "");
     } else {
-      // 새 기록 모드일 때 초기화
       setMood("");
+      setEnergy(0);
       setExercise("");
       setWeight("");
       setBowel("");
+      setGratitude("");
     }
   }, [editingRecord]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ mood, exercise, weight, bowel });
-    if (!editingRecord) {
-      // 새 기록 제출 후 초기화
-      setMood("");
-      setExercise("");
-      setWeight("");
-      setBowel("");
-    }
-  };
 
-  // 편집 취소
-  const handleCancel = () => {
+    // 에너지 선택 여부 체크
+    if (energy === 0 || energy === null) {
+      alert("에너지를 선택해주세요!");
+      return; // submit 막기
+    }
+
+      onSubmit({
+    mood: mood || null,          // 빈 문자열은 null로
+    energy,
+    exercise: exercise || null,  // 빈 문자열은 null로
+    weight: weight === "" ? null : Number(weight), // 숫자형 변환 + 빈값은 null
+    bowel: bowel || null,
+    gratitude: gratitude || null,
+  });
+
+  if (!editingRecord) {
     setMood("");
+    setEnergy(0);
     setExercise("");
     setWeight("");
     setBowel("");
-    onSubmit(null); // RecordPage에서 editingRecord를 null로
+    setGratitude("");
+  }
+  
+    onSubmit({ mood, energy, exercise, weight, bowel, gratitude });
+    if (!editingRecord) {
+      setMood("");
+      setEnergy(0);
+      setExercise("");
+      setWeight("");
+      setBowel("");
+      setGratitude("");
+    }
+  };
+
+  const handleCancel = () => {
+    setMood("");
+    setEnergy(0);
+    setExercise("");
+    setWeight("");
+    setBowel("");
+    setGratitude("");
+    onSubmit(null);
   };
 
   return (
     <form className="record-form" onSubmit={handleSubmit}>
-      <h2>오늘의 기록을 남겨보세요 🌈</h2>
 
+      {/* 기분 */}
       <div className="form-group">
         <label>기분</label>
         <input
@@ -59,6 +90,26 @@ const RecordForm = ({ onSubmit, editingRecord }) => {
         />
       </div>
 
+      {/* 에너지 / 스트레스 */}
+      <div className="form-group">
+        <label>에너지 게이지 🚀</label>
+        <div className="stars">
+          {[...Array(10)].map((_, idx) => {
+            const starNum = idx + 1;
+            return (
+              <span
+                key={starNum}
+                className={starNum <= energy ? "star filled" : "star"}
+                onClick={() => setEnergy(starNum)}
+              >
+                ★
+              </span>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 운동 */}
       <div className="form-group">
         <label>운동</label>
         <input
@@ -69,6 +120,7 @@ const RecordForm = ({ onSubmit, editingRecord }) => {
         />
       </div>
 
+      {/* 몸무게 */}
       <div className="form-group">
         <label>몸무게 (kg)</label>
         <input
@@ -81,6 +133,7 @@ const RecordForm = ({ onSubmit, editingRecord }) => {
         />
       </div>
 
+      {/* 배변활동 */}
       <div className="form-group">
         <label>배변활동</label>
         <input
@@ -91,12 +144,21 @@ const RecordForm = ({ onSubmit, editingRecord }) => {
         />
       </div>
 
+      {/* 감사일기 */}
+      <div className="form-group">
+        <label>감사일기</label>
+        <textarea
+          value={gratitude}
+          onChange={(e) => setGratitude(e.target.value)}
+          placeholder="오늘 감사했던 일 3가지 적어보기"
+        />
+      </div>
+
+      {/* 버튼 */}
       <div className="form-actions">
         <button type="submit" className="submit-btn">
           {editingRecord ? "수정 완료 💾" : "기록 저장 💾"}
         </button>
-
-        {/* 편집 모드일 때만 취소 버튼 표시 */}
         {editingRecord && (
           <button type="button" className="cancel-btn" onClick={handleCancel}>
             ❌ 취소

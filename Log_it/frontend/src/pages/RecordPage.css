@@ -1,7 +1,7 @@
 /* 전체 페이지 */
 .record-page {
   min-height: 100vh;
-  padding: 30px 15px;
+  padding: 20px 10px; /* 전체 padding 축소 */
   background: linear-gradient(to bottom right, #fbeaff, #e4f0ff);
   display: flex;
   flex-direction: column;
@@ -12,71 +12,76 @@
 
 /* 제목 */
 .record-page h1 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
+  font-size: 1.4rem; /* 축소 */
+  margin-bottom: 4px;
 }
 
 .record-page .subtitle {
-  font-size: 1rem;
+  font-size: 0.9rem; /* 축소 */
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 /* 기록 리스트 */
 .record-list {
   width: 100%;
-  max-width: 500px;
-  margin-top: 30px;
+  max-width: 360px; /* 전체적으로 줄임 */
+  margin-top: 20px;
 }
 
 .record-list h2 {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
   border-bottom: 2px solid #e0d6f8;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
 }
 
 /* 카드 */
 .record-card {
   background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(174, 123, 255, 0.15);
-  padding: 20px;
-  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(174, 123, 255, 0.15);
+  padding: 14px; /* 축소 */
+  margin-bottom: 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .record-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(174, 123, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(174, 123, 255, 0.25);
 }
 
 /* 날짜 / 세부 내용 */
 .record-card .date {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #888;
 }
 
 .record-card .details {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: #444;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
+}
+
+.record-card .details span {
+  margin-right: 8px;
+}
+
+.record-card .details span:nth-child(2) {
+  color: #ffc107; /* 별색 */
 }
 
 /* 카드 버튼 */
 .record-card button {
-  height: 36px;
-  padding: 0 12px;
-  font-size: 0.9rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 0.8rem;
+  border-radius: 6px;
 }
 
 /* 수정 버튼 */
@@ -87,7 +92,7 @@
 
 .record-card .edit-btn:hover {
   background-color: #855ed1;
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* 삭제 버튼 */
@@ -98,16 +103,17 @@
 
 .record-card .delete-btn:hover {
   background-color: #e55555;
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* RecordForm */
 .record-page form {
   width: 100%;
-  max-width: 500px;
+  max-width: 250px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
+  margin: 0 auto;
 }
 
 .record-page input,
@@ -115,10 +121,10 @@
 .record-page textarea,
 .record-page button {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 8px; /* 축소 */
+  border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   box-sizing: border-box;
 }
 
@@ -127,25 +133,11 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  height: 42px;
+  height: 36px;
   font-weight: bold;
-  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .record-page button:hover {
   background-color: #855ed1;
   transform: scale(1.02);
-}
-
-/* 반응형 */
-@media (max-width: 480px) {
-  .record-page h1 {
-    font-size: 1.5rem;
-  }
-  .record-page .subtitle {
-    font-size: 0.9rem;
-  }
-  .record-card {
-    padding: 16px;
-  }
 }

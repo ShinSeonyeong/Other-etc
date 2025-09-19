@@ -3,28 +3,24 @@
   margin: 40px auto;
   padding: 32px;
   background: #fff;
-  border: 3px dashed #ff90e8; /* 말풍선 느낌 */
+  border: 3px dashed #ff90e8;
   border-radius: 24px;
-  box-shadow: 0 0 20px rgba(255, 144, 232, 0.4); /* 글로우 */
+  box-shadow: 0 0 20px rgba(255, 144, 232, 0.4);
   font-family: "Arial Rounded MT Bold", "Noto Sans KR", sans-serif;
+  font-size: 14px;
   position: relative;
   animation: glowFade 4s infinite alternate;
 }
+
 
 @keyframes glowFade {
   0% {
     box-shadow: 0 0 10px rgba(255, 144, 232, 0.3);
   }
+
   100% {
     box-shadow: 0 0 25px rgba(186, 113, 245, 0.7);
   }
-}
-
-.record-form h2 {
-  text-align: center;
-  margin-bottom: 24px;
-  color: #ba68c8;
-  font-size: 1.6rem;
 }
 
 /* 입력 그룹 */
@@ -38,7 +34,7 @@
   margin-bottom: 6px;
   font-weight: bold;
   color: #333;
-  padding-left: 28px; /* 공간 확보 */
+  padding-left: 23px;
   position: relative;
 }
 
@@ -55,7 +51,7 @@
   padding: 14px 16px;
   border: 2px solid #d1c4e9;
   border-radius: 16px;
-  font-size: 16px;
+  font-size: 14px;
   outline: none;
   background: #fdf7ff;
   transition: all 0.3s ease;
@@ -69,11 +65,18 @@
   background-color: #fff3ff;
 }
 
+.form-group input::placeholder {
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  color: #999;
+  opacity: 1;
+  font-size: 11px;
+}
+
 /* 제출 버튼 */
 .submit-btn {
   width: 100%;
   padding: 14px 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: white;
   background: linear-gradient(to right, #ff90e8, #b388ff);
@@ -107,4 +110,32 @@
 .cancel-btn:hover {
   transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(186, 104, 200, 0.4);
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 20px;
+  color: #ddd;
+  transition: color 0.2s;
+}
+
+/* 클릭된 별 */
+.star.filled {
+  color: #ffc107;
+}
+
+.form-group textarea {
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+.form-group textarea::placeholder {
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  color: #999;
+  opacity: 1;
+  /* 일부 브라우저에서 투명도 기본이 낮으므로 1로 설정 */
 }

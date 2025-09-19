@@ -89,8 +89,9 @@ const RecordPage = () => {
 
   return (
     <div className="record-page">
-      <h1>📖 오늘의 기록</h1>
-      <h3 className="subtitle">하루를 정리해보세요 💫</h3>
+      <h1>오늘의 기록</h1>
+      <h3 className="subtitle">작은 순간도 놓치지 말고 담아보세요💫</h3>
+
       <RecordForm onSubmit={handleRecordSubmit} editingRecord={editingRecord} />
 
       <div className="record-list">
@@ -118,10 +119,15 @@ const RecordPage = () => {
                   </div>
                   <div className="details">
                     <span>기분: {record.mood}</span> |{" "}
+                    <span>
+                      에너지: {"★".repeat(record.energy)}{"☆".repeat(10 - record.energy)}
+                    </span> |{" "}
                     <span>운동: {record.exercise}</span> |{" "}
                     <span>몸무게: {record.weight}kg</span> |{" "}
-                    <span>배변: {record.bowel}</span>
+                    <span>배변: {record.bowel}</span> |{" "}
+                    <span>감사: {record.gratitude}</span>
                   </div>
+
                   <button onClick={() => handleEditClick(record)}>✏️ 수정</button>
                   <button
                     className="delete-btn"

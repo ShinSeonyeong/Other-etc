@@ -18,15 +18,12 @@ const KakaoLoginButton = () => {
     <button
       onClick={handleLogin}
       style={{
-        backgroundColor: "#FEE500",
-        padding: "10px 20px",
-        borderRadius: 8,
         border: "none",
-        fontWeight: "bold",
+        background: "transparent",
         cursor: "pointer",
       }}
     >
-      🟡 카카오로 로그인
+      <img src="/images/kakao_login.png" alt="카카오로그인" />
     </button>
   );
 };

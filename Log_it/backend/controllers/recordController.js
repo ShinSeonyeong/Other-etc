@@ -3,11 +3,11 @@ const supabase = require("../services/supabaseClient");
 exports.saveRecord = async (req, res) => {
   try {
     const userId = req.user.id; // authenticateJWT에서 세팅됨
-    const { mood, exercise, weight, bowel } = req.body;
+    const { mood, energy, exercise, weight, bowel, gratitude } = req.body;
 
     const { data, error } = await supabase
       .from("records")
-      .insert([{ user_id: userId, mood, exercise, weight, bowel }])
+      .insert([{ user_id: userId, mood, energy, exercise, weight, bowel, gratitude }])
       .select()
       .single();
 
@@ -16,7 +16,7 @@ exports.saveRecord = async (req, res) => {
       return res.status(500).json({ message: "기록 저장 실패", error: error.message });
     }
 
-    console.log("받은 기록:", { userId, mood, exercise, weight, bowel });
+    console.log("받은 기록:", { userId, mood, energy, exercise, weight, bowel, gratitude });
     return res.json({ message: "기록이 저장되었습니다.", record: data });
   } catch (e) {
     console.error(e);
@@ -29,9 +29,10 @@ exports.getRecords = async (req, res) => {
     const userId = req.user.id;
     const { data, error } = await supabase
       .from("records")
-      .select("*")
+      .select("id, mood, energy, exercise, weight, bowel, gratitude, created_at")
       .eq("user_id", userId)
       .order("created_at", { ascending: false });
+
 
     console.log("getRecords data:", data);
 
@@ -39,7 +40,7 @@ exports.getRecords = async (req, res) => {
 
     return res.json({ record: data })
   } catch (e) {
-    return res.status(500).jsonn({ message: "서버 오류" })
+    return res.status(500).json({ message: "서버 오류" })
   }
 }
 
@@ -76,14 +77,15 @@ exports.updateRecord = async (req, res) => {
   try {
     const userId = req.user.id;
     const { id } = req.params;
-    const { mood, exercise, weight, bowel } = req.body;
+    const { mood, energy, exercise, weight, bowel, gratitude } = req.body;
 
     const { data, error } = await supabase
       .from("records")
-      .update({ mood, exercise, weight, bowel })
+      .update({ mood, energy, exercise, weight, bowel, gratitude })
       .eq("id", id)
       .eq("user_id", userId)
-      .select();  // 업데이트된 데이터를 반환
+      .select();
+
 
     if (error) {
       console.error("updateRecord error:", error);
