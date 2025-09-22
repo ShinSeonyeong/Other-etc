@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./RecordForm.css";
+import { message } from "antd";
+import "antd/dist/reset.css"; // antd 스타일 적용
 
 const RecordForm = ({ onSubmit, editingRecord }) => {
   const [mood, setMood] = useState("");
@@ -32,7 +34,7 @@ const RecordForm = ({ onSubmit, editingRecord }) => {
 
     // 에너지 선택 여부 체크
     if (energy === 0 || energy === null) {
-      alert("에너지를 선택해주세요!");
+      message.warning("에너지를 선택해주세요!");
       return; // submit 막기
     }
 
@@ -54,7 +56,6 @@ const RecordForm = ({ onSubmit, editingRecord }) => {
     setGratitude("");
   }
   
-    onSubmit({ mood, energy, exercise, weight, bowel, gratitude });
     if (!editingRecord) {
       setMood("");
       setEnergy(0);

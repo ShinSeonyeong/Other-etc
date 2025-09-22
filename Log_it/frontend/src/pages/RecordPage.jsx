@@ -3,6 +3,8 @@ import RecordForm from "../components/RecordForm";
 import { postRecord } from "../api/recordApi";
 import "./RecordPage.css";
 import { motion, AnimatePresence } from "framer-motion"; // 추가
+import { message } from "antd";
+import "antd/dist/reset.css"; // antd 스타일 적용
 
 const API_URL = import.meta.env.VITE_API_BASE_URL; // env 사용
 
@@ -50,16 +52,15 @@ const RecordPage = () => {
           prev.map(r => (r.id === editingRecord.id ? updated.record : r))
         );
         setEditingRecord(null); // 편집 종료
-        alert("기록이 수정되었습니다!");
+        message.success("기록이 수정되었습니다!");
       } else {
-        // 새 기록 저장
         const res = await postRecord(data);
         setRecords(prev => [res.record, ...prev]);
-        alert("기록이 성공적으로 저장되었습니다!");
+        message.success("기록이 성공적으로 저장되었습니다!");
       }
     } catch (error) {
       console.error(error);
-      alert("저장 실패");
+      message.error("저장 실패");
     }
   };
 
@@ -76,10 +77,10 @@ const RecordPage = () => {
       if (!res.ok) throw new Error("삭제 실패");
 
       setRecords(prev => prev.filter(record => record.id !== id));
-      alert("기록이 삭제되었습니다.");
+      message.success("기록이 삭제되었습니다.");
     } catch (error) {
       console.error(error);
-      alert("삭제 중 오류가 발생했습니다.");
+      message.success("삭제 중 오류가 발생했습니다.");
     }
   };
 
