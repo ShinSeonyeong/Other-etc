@@ -109,7 +109,7 @@
 /* RecordForm */
 .record-page form {
   width: 100%;
-  max-width: 300px;
+  max-width: 330px;
   display: flex;
   flex-direction: column;
   gap: 10px;
