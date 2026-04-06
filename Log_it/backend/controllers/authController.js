@@ -30,7 +30,8 @@ exports.kakaoCallback = async (req, res) => {
       console.error("❌ CLIENT_URL이 설정되지 않았습니다!");
       return res.status(500).send("환경변수 CLIENT_URL이 누락됨");
     }
-    
+    console.log("👉 redirect 실행됨");
+    console.log(`URL: http://localhost:5173/login-result?token=${jwtToken}`);
     res.redirect(
       `${clientUrl}/login-result?token=${jwtToken}&nickname=${encodeURIComponent(
         user.nickname
