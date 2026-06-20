@@ -3,6 +3,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const postRecord = async (recordData) => {
   const token = localStorage.getItem("jwt"); // JWT 토큰 (로그인 후 저장됨)
+
   const res = await fetch(`${API_BASE_URL}/api/records`, {
     method: "POST",
     headers: {

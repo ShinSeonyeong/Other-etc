@@ -16,7 +16,7 @@ exports.saveRecord = async (req, res) => {
       return res.status(500).json({ message: "기록 저장 실패", error: error.message });
     }
 
-    console.log("받은 기록:", { userId, mood, energy, exercise, weight, bowel, gratitude });
+    // console.log("받은 기록:", { userId, mood, energy, exercise, weight, bowel, gratitude });
     return res.json({ message: "기록이 저장되었습니다.", record: data });
   } catch (e) {
     console.error(e);
@@ -27,10 +27,7 @@ exports.saveRecord = async (req, res) => {
 exports.getRecords = async (req, res) => {
   // console.log("🔥 getRecords 진입");
   // console.log("👉 req.user:", req.user);
-  console.log("🔥 supabase test 시작");
 
-  const test = await supabase.from("records").select("*");
-  console.log("🔥 supabase test 결과:", test);
   try {
     const userId = req.user.id;
     // console.log("👉 userId:", userId);
@@ -41,14 +38,14 @@ exports.getRecords = async (req, res) => {
         .eq("user_id", userId)
         .order("created_at", { ascending: false });
 
-    console.log("👉 DB 결과:", data);
+    // console.log("👉 DB 결과:", data);
 
     if (error) {
       // console.error("❌ getRecords error:", error);
       return res.status(500).json({ message: "기록 조회 실패", error: error.message });
     }
 
-    console.log("✅ getRecords data:", data);
+    // console.log("✅ getRecords data:", data);
 
     return res.json({ record: data });
   } catch (e) {

@@ -9,6 +9,9 @@ import "antd/dist/reset.css"; // antd 스타일 적용
 const API_URL = import.meta.env.VITE_API_BASE_URL; // env 사용
 
 const RecordPage = () => {
+  // console.log("API BASE URL:", import.meta.env.VITE_API_BASE_URL);
+
+
   const [records, setRecords] = useState([]);
   const [editingRecord, setEditingRecord] = useState(null); // 수정 상태
 
